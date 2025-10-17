@@ -4,27 +4,31 @@
 
 /* --- Tokens --- */
 :root{
-  /* Core text/background (keep if you already have them) */
-  --ink: #0f172a;          /* deep slate text */
-  --muted: #667085;
+  /* Base (keep if you already like yours) */
   --paper: #ffffff;
   --bg: #f7f8fb;
   --line: #e2e8f0;
 
-  /* === Your headshot-matched brand palette === */
-  --brand: #6B3E2E;        /* chocolate accent (buttons/links) */
-  --brand-ink: #3E2519;    /* darker chocolate for headings/hover */
-  --brand-2: #475569;      /* slate secondary accent */
+  /* Text */
+  --ink: #0f172a;          /* main body text */
+  --muted: #667085;        /* secondary text */
+  --ink-warm: #4B4744;     /* warm slate accent (lists/notes) */
 
-  /* Light hero gradient (warm neutral) */
+  /* Brand (headshot-matched) */
+  --brand: #5E3A24;        /* chocolate: buttons/links */
+  --brand-ink: #3B2216;    /* darker chocolate: headings/hover */
+  --brand-2: #222735;      /* cool slate: subtle tints */
+
+  /* Hero gradient (warm cream neutrals) */
   --hero-1: #ffffff;       /* top */
-  --hero-2: #FFF6EC;       /* soft cream (taupe-inspired) */
-  --hero-3: #F3ECE6;       /* warm sand base */
+  --hero-2: #F6F2EA;       /* soft cream */
+  --hero-3: #EFE8DF;       /* warm sand */
 
   /* Chips/badges */
   --chip-bg: #ffffff;
-  --chip-border: #e8dfd9;  /* warm border to match cream */
+  --chip-border: #e8dfd9;  /* warm line */
 }
+
 
 
 *{box-sizing:border-box}
