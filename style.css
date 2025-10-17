@@ -1,68 +1,131 @@
 /* =========================
-   Polished minimal theme
-   Works with your existing HTML
+   Academic Vibrant Theme
    ========================= */
 
-/* --- Color & spacing system --- */
+/* --- Tokens --- */
 :root{
-  /* Colors */
-  --ink: #0f172a;           /* text */
-  --muted: #64748b;         /* secondary text */
-  --paper: #ffffff;         /* section cards */
-  --line: #e2e8f0;          /* borders */
-  --brand: #0a66c2;         /* links/buttons */
-  --brand-ink: #0b3a6f;     /* dark accent */
-  --bg: #f7f9fc;            /* page background */
-
-  /* Hero gradient */
-  --hero-top: #0b1020;      /* deep navy */
-  --hero-accent: rgba(255,255,255,.14);
-
-  /* Type scale & spacing */
-  --radius: 18px;
-  --shadow: 0 12px 30px rgba(2, 6, 23, .08);
-  --s-1: 8px;
-  --s0: 12px;
-  --s1: 16px;
-  --s2: 20px;
-  --s3: 24px;
-  --s4: 32px;
-  --s5: 40px;
-  --s6: 56px;
-  --maxw: 1040px;
+  --ink:#0f172a; --muted:#64748b; --paper:#ffffff; --bg:#f6f7fb;
+  --line:#e2e8f0; --brand:#4f46e5; --brand-2:#06b6d4; --brand-3:#f59e0b;
+  --brand-ink:#1e1b4b; --success:#16a34a; --danger:#dc2626;
+  --radius:18px; --shadow:0 16px 40px rgba(2,6,23,.10);
+  --maxw:1080px; --s1:12px; --s2:16px; --s3:20px; --s4:28px; --s5:40px; --s6:64px;
 }
 
-/* --- Base --- */
-*{ box-sizing: border-box; }
-html{ scroll-behavior: smooth; }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-  margin: 0; color: var(--ink); background: var(--bg);
+  margin:0; background:var(--bg); color:var(--ink);
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  line-height: 1.65; font-size: 16px;
+  line-height:1.7; font-size:16px;
 }
-.container{ max-width: var(--maxw); margin: 0 auto; padding: 0 var(--s3); }
+.container{max-width:var(--maxw); margin:0 auto; padding:0 var(--s4)}
 
-/* --- Sticky header --- */
+/* --- Fancy sticky header --- */
 .site-header{
-  position: sticky; top: 0; z-index: 50;
-  background: rgba(255,255,255,.75);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(226,232,240,.7);
+  position:sticky; top:0; z-index:50; backdrop-filter: blur(10px);
+  background:linear-gradient(90deg, rgba(255,255,255,.85), rgba(255,255,255,.72));
+  border-bottom:1px solid rgba(226,232,240,.8);
 }
-.navbar{
-  display: flex; align-items: center; justify-content: space-between;
-  height: 68px;
-}
+.navbar{display:flex; align-items:center; justify-content:space-between; height:72px}
 .brand{
-  font-weight: 800; letter-spacing: .2px; color: var(--brand-ink);
-  text-decoration: none; font-size: 18px;
+  font-weight:900; letter-spacing:.2px; color:var(--brand-ink); text-decoration:none; font-size:18px
 }
 .nav a{
-  color: var(--brand-ink); text-decoration: none; margin-left: var(--s3);
-  padding: 6px 0; position: relative;
+  color:var(--brand-ink); text-decoration:none; margin-left:22px; padding:6px 2px; position:relative
 }
 .nav a::after{
-  content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0;
-  background: var(--brand); transition: width .2s ease;
+  content:""; position:absolute; left:0; bottom:-3px; height:3px; width:0;
+  background:linear-gradient(90deg,var(--brand),var(--brand-2)); border-radius:3px; transition:width .18s ease
 }
-.nav a:hover::after{ width: 100
+.nav a:hover::after{width:100%}
+
+/* --- Hero: colorful, with blob & grid --- */
+.hero{
+  color:#fff; padding:var(--s6) 0 var(--s5); position:relative; overflow:hidden;
+  background:
+    radial-gradient(900px 420px at 85% -10%, rgba(79,70,229,.35), transparent 60%),
+    radial-gradient(900px 420px at 15% -10%, rgba(6,182,212,.40), transparent 60%),
+    linear-gradient(180deg, #0b1020, #141b36 40%, #0b1020 100%);
+}
+.hero::after{
+  content:""; position:absolute; inset:0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size:28px 28px; pointer-events:none
+}
+.hero-inner{position:relative; z-index:1}
+.hero h1{margin:0 0 6px; font-size:clamp(30px,4.6vw,46px); font-weight:900; letter-spacing:.2px}
+.tagline{color:#d8e6ff; margin:6px 0 14px; font-size:clamp(16px,1.6vw,18px)}
+.badges{display:flex; gap:10px; flex-wrap:wrap; margin:8px 0 18px}
+.badge{
+  display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; font-weight:600;
+  background:rgba(255,255,255,.16); color:#fff; border:1px solid rgba(255,255,255,.25)
+}
+.badge svg{width:16px; height:16px; opacity:.9}
+.cta-row{display:flex; gap:12px; flex-wrap:wrap}
+.btn{
+  appearance:none; border:0; cursor:pointer; border-radius:999px; padding:10px 16px; font-weight:800;
+  text-decoration:none; display:inline-flex; align-items:center; gap:10px; box-shadow:var(--shadow)
+}
+.btn-primary{background:#fff; color:#0b1840}
+.btn-ghost{background:transparent; color:#fff; outline:1px solid rgba(255,255,255,.45)}
+.btn svg{width:16px; height:16px}
+
+/* --- Section cards with colored headers --- */
+main{margin-top:-28px}
+.section{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow); padding:var(--s5) var(--s5); margin:var(--s5) 0
+}
+.section .eyebrow{
+  display:inline-block; font-weight:800; letter-spacing:.12em; text-transform:uppercase;
+  font-size:.74rem; color:#475569; background:#eef2ff; border:1px solid #c7d2fe;
+  padding:4px 10px; border-radius:999px; margin-bottom:12px
+}
+.section h2{
+  margin:0 0 var(--s2); font-size:clamp(22px,2.4vw,28px); letter-spacing:.1px
+}
+.section p{margin:0 0 var(--s2)}
+.section ul{margin:var(--s2) 0 0; padding-left:1.2rem}
+.section li{margin:8px 0}
+.note{color:var(--muted); font-size:.95rem}
+
+/* --- Publication cards --- */
+.pubs{display:grid; grid-template-columns:1fr; gap:16px}
+.pub{
+  border:1px solid var(--line); border-radius:14px; padding:16px 18px; background:#fff;
+  display:grid; gap:6px
+}
+.pub .meta{color:var(--muted); font-size:.92rem}
+.pub a{color:var(--brand); text-decoration:none}
+.pub a:hover{text-decoration:underline}
+
+/* --- Timeline chips (Project section) --- */
+.timeline{display:flex; flex-wrap:wrap; gap:10px; margin-top:8px}
+.chip{
+  display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px;
+  border:1px dashed #cbd5e1; background:#f8fafc; color:#0f172a; font-weight:600
+}
+.chip svg{width:16px; height:16px}
+
+/* --- Contact card --- */
+.contact-card{
+  background:linear-gradient(180deg,#ffffff, #fbfdff);
+  border:1px solid var(--line); border-radius:16px; padding:18px; display:grid; gap:8px
+}
+.contact-card .row{display:flex; gap:12px; align-items:center}
+.contact-card a{color:var(--brand); text-decoration:none}
+.contact-card a:hover{text-decoration:underline}
+
+/* --- Footer --- */
+footer{margin:var(--s6) 0 var(--s6); color:var(--muted)}
+.links a{color:var(--brand-ink); text-decoration:none; margin-right:16px}
+.links a:hover{text-decoration:underline}
+
+/* --- Mobile tweaks --- */
+@media (max-width:760px){
+  .nav{display:none}
+  .section{padding:var(--s4)}
+  .container{padding:0 var(--s3)}
+}
