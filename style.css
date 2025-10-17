@@ -1,50 +1,44 @@
 /* =========================
    Kate A Thompson — Site CSS
-   Palette: cream taupe + slate + chocolate
+   Editorial, airy theme inspired by warm-slate palettes
    ========================= */
 
 /* ===== Tokens / Design System ===== */
 :root{
   /* Layout & rhythm */
-  --maxw: 1080px;
+  --maxw: 1040px;
   --radius: 18px;
-  --shadow: 0 16px 40px rgba(2, 6, 23, .10);
+  --shadow: 0 18px 50px rgba(16, 23, 42, .06);
 
-  /* Spacing scale */
+  /* Spacing scale (editorial) */
   --s1: 12px;
-  --s2: 16px;
-  --s3: 20px;
-  --s4: 28px;
-  --s5: 40px;
-  --s6: 64px;
+  --s2: 18px;
+  --s3: 24px;
+  --s4: 36px;
+  --s5: 56px;
+  --s6: 84px;
 
-  /* Base surfaces & text */
-  --paper: #ffffff;      /* card surface */
-  --bg: #f7f8fb;         /* page background */
-  --line: #e2e8f0;       /* neutral borders */
+  /* Surfaces & text */
+  --paper:#ffffff;
+  --bg:#FAF9F7;
+  --line:#EAE6E1;
 
-  --ink: #0f172a;        /* body text (deep slate) */
-  --muted: #667085;      /* secondary text */
-  --ink-warm: #4B4744;   /* warm slate accent (notes/lists) */
+  --ink:#1f2937;     /* body */
+  --muted:#6b7280;   /* secondary */
 
-   /* Slate-forward */
---brand:    #2C3748; /* primary: slate (buttons/links) */
---brand-ink:#1D2632; /* darker hover/headings */
---brand-2:  #7B5836; /* subtle warm counterpoint (hair/jacket) */
+  /* Brand (warm-slate with soft terracotta accent) */
+  --brand:#344053;       /* primary (links/buttons) */
+  --brand-ink:#232b39;   /* darker hover/headings */
+  --brand-2:#915842;     /* soft accent */
 
---hero-1:#ffffff;
---hero-2:#F3F6FB;   /* cool light */
---hero-3:#E9EEF6;   /* soft slate tint */
+  /* Hero (very soft, editorial) */
+  --hero-1:#FFFFFF;
+  --hero-2:#FBF7F2;
+  --hero-3:#F3EEE9;
 
-
-  /* Hero gradient (warm creams) */
-  --hero-1: #ffffff;     /* top */
-  --hero-2: #F6F2EA;     /* soft cream */
-  --hero-3: #EFE8DF;     /* warm sand */
-
-  /* Chips/badges */
-  --chip-bg: #ffffff;
-  --chip-border: #e8dfd9; /* warm outline */
+  /* Chips */
+  --chip-bg:#fff;
+  --chip-border:#E7E0D8;
 }
 
 /* ===== Base ===== */
@@ -52,197 +46,129 @@
 html{ scroll-behavior:smooth; }
 body{
   margin:0; background:var(--bg); color:var(--ink);
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  line-height:1.7; font-size:16px;
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  line-height:1.75; font-size:17px;
 }
-.container{ max-width:var(--maxw); margin:0 auto; padding:0 var(--s4); }
+.container{ max-width:var(--maxw); margin:0 auto; padding:0 var(--s3); }
 
-/* Links (brand-aware) */
 a{ color:var(--brand); text-decoration:none; }
 a:hover{ color:var(--brand-ink); text-decoration:underline; }
 
-/* ===== Sticky Header / Nav ===== */
+/* ===== Header / Nav ===== */
 .site-header{
   position:sticky; top:0; z-index:50;
-  backdrop-filter: blur(10px);
-  background:linear-gradient(90deg, rgba(255,255,255,.88), rgba(255,255,255,.76));
-  border-bottom:1px solid rgba(226,232,240,.85);
+  backdrop-filter: blur(8px);
+  background:rgba(255,255,255,.85);
+  border-bottom:1px solid rgba(234,230,225,.9);
 }
-.navbar{ display:flex; align-items:center; justify-content:space-between; height:72px; }
+.navbar{ display:flex; align-items:center; justify-content:space-between; height:80px; }
 .brand{
-  font-weight:900; letter-spacing:.2px; color:var(--brand-ink); text-decoration:none; font-size:18px;
+  font: 700 18px/1 "Inter", ui-sans-serif;
+  letter-spacing:.2px; color:var(--brand-ink);
 }
-.nav a{
-  color:var(--brand-ink); text-decoration:none; margin-left:22px; padding:6px 2px; position:relative;
-}
-.nav a::after{
-  content:""; position:absolute; left:0; bottom:-3px; height:3px; width:0;
-  background:linear-gradient(90deg, var(--brand), var(--brand-2)); border-radius:3px; transition:width .18s ease;
-}
-.nav a:hover::after{ width:100%; }
+.nav a{ color:var(--brand-ink); margin-left:22px; padding:6px 2px; }
 
-/* ===== Hero (light, warm neutrals) ===== */
+/* ===== Hero (light, editorial) ===== */
 .hero{
-  color: var(--ink);
+  color:var(--ink);
   padding: var(--s6) 0 var(--s5);
-  position: relative; overflow: hidden;
+  position:relative; overflow:hidden;
   background:
-    radial-gradient(900px 420px at 85% -10%, rgba(34, 39, 53, 0.12), transparent 60%), /* slate tint */
-    radial-gradient(820px 360px at 15% -10%, rgba(94, 58, 36, 0.10), transparent 60%), /* chocolate tint */
-    linear-gradient(180deg, var(--hero-1) 0%, var(--hero-2) 58%, var(--hero-3) 100%);
+    radial-gradient(900px 420px at 85% -10%, rgba(52,64,83,.09), transparent 60%),
+    radial-gradient(820px 360px at 15% -10%, rgba(145,88,66,.07), transparent 60%),
+    linear-gradient(180deg, var(--hero-1) 0%, var(--hero-2) 55%, var(--hero-3) 100%);
 }
-.hero::after{
-  content:""; position:absolute; inset:0; pointer-events:none;
-  background:
-    radial-gradient(120% 140% at 50% -20%, rgba(0,0,0,0.035), transparent 55%),
-    radial-gradient(120% 90% at 50% 120%, rgba(0,0,0,0.05), transparent 60%);
-}
-.hero-inner{ position:relative; z-index:1; text-align:center; }
+.hero-inner{ position:relative; z-index:1; text-align:left; max-width:880px; margin:0 auto; }
 
-.no-wrap { white-space: nowrap; } /* utility to keep words together */
+.hello{
+  font: 700 16px/1 "Inter", ui-sans-serif;
+  letter-spacing:.12em; text-transform:uppercase;
+  color:#7b7b7b; margin:0 0 14px;
+}
+.no-wrap { white-space: nowrap; }
 
 .hero h1{
-  text-wrap: balance; /* nicer automatic line breaks */
-  margin:0 0 8px;
-  font-size:clamp(30px,4.6vw,46px);
-  font-weight:900; letter-spacing:.2px;
-  color: var(--brand-ink); /* chocolate title */
+  font-family:"Merriweather", Georgia, serif;
+  font-weight:700; letter-spacing:.2px;
+  font-size: clamp(34px, 5.2vw, 56px);
+  line-height:1.2; margin:0 0 12px; color:var(--brand-ink);
+  text-wrap: balance;
 }
 .tagline{
-  color:#56514d; /* warm slate */
-  margin:6px 0 16px;
-  font-size:clamp(16px,1.6vw,18px);
+  color:#4f5662; margin: 0 0 24px; font-size: clamp(16px, 1.6vw, 19px);
 }
-
-/* Badges (hero) */
-.badges{
-  display:flex; gap:10px; flex-wrap:wrap; margin:8px 0 18px; justify-content:center;
-}
+.badges{ display:flex; gap:10px; flex-wrap:wrap; margin:10px 0 26px; }
 .badge{
-  display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; font-weight:600;
-  background: var(--chip-bg); color: var(--ink); border:1px solid var(--chip-border);
-  box-shadow: var(--shadow);
+  display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px;
+  border:1px solid var(--chip-border); background:var(--chip-bg); color:#3b3b3b; font-weight:600;
 }
-.badge svg{ width:16px; height:16px; opacity:.85; }
+.cta-row{ display:flex; gap:14px; flex-wrap:wrap; }
 
-/* Hero CTAs */
-.cta-row{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
+/* Buttons */
 .btn{
-  appearance:none; border:0; cursor:pointer; border-radius:999px; padding:10px 16px; font-weight:800;
-  text-decoration:none; display:inline-flex; align-items:center; gap:10px; box-shadow:var(--shadow);
+  appearance:none; border:0; cursor:pointer; border-radius:999px;
+  padding:12px 18px; font-weight:700; display:inline-flex; align-items:center; gap:10px;
+  box-shadow: 0 2px 0 rgba(0,0,0,.03);
 }
 .btn-primary{ background: var(--brand); color:#fff; }
 .btn-primary:hover{ filter: brightness(1.05); }
-.btn-ghost{
-  background:#ffffff; color: var(--brand-ink);
-  outline:1px solid #d9cfc9; /* warm outline */
-}
-.btn-ghost:hover{ outline-color:#cdbfb6; }
-.btn svg{ width:16px; height:16px; }
+.btn-ghost{ background:#fff; color:var(--brand-ink); outline:1px solid #e7e0d8; }
+.btn-ghost:hover{ outline-color:#d9c9bb; }
 
-/* ===== Sections as Cards ===== */
-main{ margin-top:-28px; } /* subtle overlap with hero */
+/* ===== Sections (airy cards) ===== */
+main{ margin-top:0; }
 .section{
-  background: var(--paper);
-  border:1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: var(--s5);
-  margin: var(--s5) 0;
+  background:var(--paper); border:1px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: clamp(40px, 6vw, 72px); margin: clamp(36px, 6vw, 72px) 0;
 }
-.section .eyebrow{
+.eyebrow{
   display:inline-block; font-weight:800; letter-spacing:.12em; text-transform:uppercase;
-  font-size:.74rem; color:#5b504b; background:#eef3ff; border:1px solid #c7d2fe;
-  padding:4px 10px; border-radius:999px; margin-bottom:12px;
+  font-size:.78rem; color:#6f6256; background:#fff6ef; border:1px solid #f0dcc8;
+  padding:6px 12px; border-radius:999px; margin-bottom:16px;
 }
-
 .section h2{
-  margin:0 0 var(--s2);
-  font-size:clamp(22px,2.4vw,28px);
-  letter-spacing:.1px; color: var(--brand-ink);
+  font-family:"Merriweather", Georgia, serif; font-weight:700;
+  margin:0 0 18px; font-size: clamp(24px, 3vw, 34px); color:var(--brand-ink);
 }
-.section p{ margin:0 0 var(--s2); }
-.section ul{ margin:var(--s2) 0 0; padding-left:1.2rem; }
-.section li{ margin:8px 0; }
-.note{ color: var(--ink-warm); font-size:.95rem; }
+.section p{ margin:0 0 18px; }
+.section ul{ margin:18px 0 0; padding-left:1.2rem; }
+.section li{ margin:10px 0; }
+.note{ color:#6b625b; }
 
-/* ===== Publication Cards ===== */
-.pubs{ display:grid; grid-template-columns:1fr; gap:16px; }
+/* ===== Publications ===== */
+.pubs{ display:grid; gap:18px; }
 .pub{
-  border:1px solid var(--line); border-radius:14px; padding:16px 18px; background:#fff;
+  border:1px solid var(--line); border-radius:14px; padding:18px 20px; background:#fff;
   display:grid; gap:6px;
 }
-.pub .meta{ color:var(--muted); font-size:.92rem; }
+.pub .meta{ color:var(--muted); font-size:.94rem; }
 .pub a{ color:var(--brand); }
 .pub a:hover{ color:var(--brand-ink); }
 
-/* ===== Timeline Chips (Project) ===== */
-.timeline{ display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; }
+/* ===== Timeline chips ===== */
+.timeline{ display:flex; flex-wrap:wrap; gap:12px; margin-top:10px; }
 .chip{
-  display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px;
-  border:1px dashed #d9cfc9; background:#fffdfa; color:#3f2a1f; font-weight:600;
+  display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px;
+  border:1px dashed #e7e0d8; background:#fffdfa; color:#3f2a1f; font-weight:600;
 }
-.chip svg{ width:16px; height:16px; }
 
-/* ===== Contact Card ===== */
+/* ===== Contact card ===== */
 .contact-card{
   background:linear-gradient(180deg,#ffffff, #fbfdff);
-  border:1px solid var(--line); border-radius:16px; padding:18px; display:grid; gap:8px;
+  border:1px solid var(--line); border-radius:16px; padding:22px; display:grid; gap:10px;
 }
-.contact-card .row{ display:flex; gap:12px; align-items:center; }
-.contact-card a{ color:var(--brand); }
-.contact-card a:hover{ color:var(--brand-ink); }
 
 /* ===== Footer ===== */
 footer{ margin: var(--s6) 0 var(--s6); color: var(--muted); }
 .links a{ color: var(--brand); margin-right:16px; }
 .links a:hover{ color: var(--brand-ink); }
 
-/* ===== Mobile Tweaks ===== */
-@media (max-width: 760px){
+/* ===== Mobile ===== */
+@media (max-width:760px){
   .nav{ display:none; }
-  .section{ padding: var(--s4); }
-  .container{ padding: 0 var(--s3); }
-}
-
-/* ========== Spacious layout overrides (paste at end) ========== */
-
-/* 1) Remove the hero overlap and give sections breathing room */
-main { margin-top: 0; } /* was -28px */
-.section {
-  padding: 56px;                 /* was 40px */
-  margin: 56px 0;                /* was 40px */
-}
-.section + .section {            /* extra gap between back-to-back cards */
-  margin-top: 64px;
-}
-
-/* 2) Headings and text rhythm */
-.section h2 { margin: 0 0 24px; }         /* more space under headings */
-.section p { margin: 0 0 20px; }          /* bigger para spacing */
-.section ul { margin: 20px 0 0; }         /* breathe before lists */
-.section li { margin: 10px 0; }
-
-.note { margin-top: 12px; }
-
-/* 3) Hero gets taller */
-.hero {
-  padding: 88px 0 72px;          /* top, bottom increased */
-}
-.badges { gap: 14px; margin: 12px 0 22px; }
-.cta-row { gap: 16px; }
-
-/* 4) Publication cards a bit roomier */
-.pubs { gap: 20px; }
-.pub { padding: 22px 24px; }
-
-/* 5) Header/nav a touch taller so it feels airy */
-.navbar { height: 80px; }
-
-/* 6) Mobile tweaks (keep things roomy on phones too) */
-@media (max-width: 760px){
-  .section { padding: 44px; margin: 44px 0; }
-  .section h2 { margin-bottom: 20px; }
-  .hero { padding: 76px 0 60px; }
-  .container { padding: 0 24px; }
+  .container{ padding:0 var(--s2); }
+  .section{ padding: 40px; margin: 40px 0; }
+  .hero{ padding: 68px 0 56px; }
+  .hero-inner{ max-width: 100%; }
 }
