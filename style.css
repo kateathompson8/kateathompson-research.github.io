@@ -27,10 +27,15 @@
   --muted: #667085;      /* secondary text */
   --ink-warm: #4B4744;   /* warm slate accent (notes/lists) */
 
-  /* Brand (matched to headshot) */
-  --brand: #5E3A24;      /* chocolate: buttons/links */
-  --brand-ink: #3B2216;  /* darker chocolate: headings/hover */
-  --brand-2: #222735;    /* cool slate: subtle accents */
+   /* Slate-forward */
+--brand:    #2C3748; /* primary: slate (buttons/links) */
+--brand-ink:#1D2632; /* darker hover/headings */
+--brand-2:  #7B5836; /* subtle warm counterpoint (hair/jacket) */
+
+--hero-1:#ffffff;
+--hero-2:#F3F6FB;   /* cool light */
+--hero-3:#E9EEF6;   /* soft slate tint */
+
 
   /* Hero gradient (warm creams) */
   --hero-1: #ffffff;     /* top */
@@ -147,9 +152,10 @@ main{ margin-top:-28px; } /* subtle overlap with hero */
 }
 .section .eyebrow{
   display:inline-block; font-weight:800; letter-spacing:.12em; text-transform:uppercase;
-  font-size:.74rem; color:#5b504b; background:#fff4ea; border:1px solid #f2d5bf;
+  font-size:.74rem; color:#5b504b; background:#eef3ff; border:1px solid #c7d2fe;
   padding:4px 10px; border-radius:999px; margin-bottom:12px;
 }
+
 .section h2{
   margin:0 0 var(--s2);
   font-size:clamp(22px,2.4vw,28px);
