@@ -1,1 +1,15 @@
-body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:2rem;line-height:1.6}h1{margin:0 0 1rem}a{color:#0a66c2;text-decoration:none}
+:root { --fg:#111; --bg:#fff; --muted:#6b7280; --accent:#0a66c2; }
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; background:var(--bg); color:var(--fg);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; line-height:1.6; }
+.container { max-width: 920px; margin: 0 auto; padding: 24px 20px; }
+header { padding-top: 56px; }
+h1 { font-size: clamp(28px, 5vw, 44px); margin: 0 0 8px; }
+h2 { margin-top: 36px; }
+.tag { color: var(--muted); font-weight: 500; margin-bottom: 24px; }
+nav a { margin-right: 16px; color: var(--accent); text-decoration: none; }
+.section { scroll-margin-top: 96px; }
+ul { padding-left: 20px; }
+.note { color: var(--muted); font-size: 0.95rem; }
+footer { border-top: 1px solid #eee; margin-top: 40px; }
+.links a { margin-right: 12px; color: var(--accent); text-decoration: none; }
