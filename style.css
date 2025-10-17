@@ -186,3 +186,15 @@ footer{ margin: var(--s6) 0 var(--s6); color: var(--muted); }
 /* (Optional) If you want to fully disable old badge styles anywhere else */
 .badges, .badge { display: none !important; }
 
+/* Center the hero buttons */
+.hero .cta-row{
+  display: flex;          /* already set, but safe to repeat */
+  flex-wrap: wrap;        /* keep wrapping on small screens */
+  gap: 14px;              /* consistent spacing */
+  justify-content: center;/* ✅ centers the buttons */
+}
+
+/* (optional) ensure buttons don't stretch weirdly */
+.hero .btn{ align-self: center; }
+
+
