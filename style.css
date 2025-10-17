@@ -172,3 +172,17 @@ footer{ margin: var(--s6) 0 var(--s6); color: var(--muted); }
   .hero{ padding: 68px 0 56px; }
   .hero-inner{ max-width: 100%; }
 }
+
+/* === Hero tweaks: center text + convert badges to a text line === */
+.hero-inner { text-align: center; }
+
+.keywords{
+  margin: 6px 0 22px;
+  color: #646b76;                 /* slightly muted */
+  font-weight: 600;
+  letter-spacing: .2px;
+}
+
+/* (Optional) If you want to fully disable old badge styles anywhere else */
+.badges, .badge { display: none !important; }
+
