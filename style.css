@@ -39,67 +39,39 @@ body{
 }
 .nav a:hover::after{width:100%}
 
-/* --- Hero: colorful, with blob & grid --- */
+/* --- Hero: velvet gradient + vignette --- */
 .hero{
   color:#fff; padding:var(--s6) 0 var(--s5); position:relative; overflow:hidden;
   background:
-    radial-gradient(900px 420px at 85% -10%, rgba(79,70,229,.35), transparent 60%),
-    radial-gradient(900px 420px at 15% -10%, rgba(6,182,212,.40), transparent 60%),
-    linear-gradient(180deg, #0b1020, #141b36 40%, #0b1020 100%);
+    radial-gradient(1000px 520px at 85% -10%, rgba(79,70,229,.28), transparent 60%),
+    radial-gradient(900px 480px at 15% -10%, rgba(6,182,212,.32), transparent 60%),
+    linear-gradient(180deg, #0b1020 0%, #141b36 45%, #0b1020 100%);
 }
+
+/* soft vignette instead of grid */
 .hero::after{
-  content:""; position:absolute; inset:0;
-  background-image:
-    linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
-  background-size:28px 28px; pointer-events:none;
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(120% 140% at 50% -20%, rgba(0,0,0,0.10), transparent 55%),
+    radial-gradient(120% 90% at 50% 120%, rgba(0,0,0,0.20), transparent 60%);
 }
 
 .hero-inner{
   position:relative; z-index:1;
-  /* Option B: center the whole hero block */
-  text-align:center;
+  text-align:center;                 /* center whole hero */
 }
 
+/* keep from earlier */
 .no-wrap { white-space: nowrap; }
-
 .hero h1{
-  text-wrap: balance;              /* modern browsers */
+  text-wrap: balance;
   margin:0 0 6px;
   font-size:clamp(30px,4.6vw,46px);
   font-weight:900; letter-spacing:.2px;
 }
-
-.tagline{
-  color:#d8e6ff; margin:6px 0 14px;
-  font-size:clamp(16px,1.6vw,18px);
-}
-
-.badges{
-  display:flex; gap:10px; flex-wrap:wrap; margin:8px 0 18px;
-  /* center badges row */
-  justify-content:center;
-}
-
-.badge{
-  display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; font-weight:600;
-  background:rgba(255,255,255,.16); color:#fff; border:1px solid rgba(255,255,255,.25);
-}
-.badge svg{ width:16px; height:16px; opacity:.9; }
-
-.cta-row{
-  display:flex; gap:12px; flex-wrap:wrap;
-  /* center buttons row */
-  justify-content:center;
-}
-
-.btn{
-  appearance:none; border:0; cursor:pointer; border-radius:999px; padding:10px 16px; font-weight:800;
-  text-decoration:none; display:inline-flex; align-items:center; gap:10px; box-shadow:var(--shadow);
-}
-.btn-primary{ background:#fff; color:#0b1840; }
-.btn-ghost{ background:transparent; color:#fff; outline:1px solid rgba(255,255,255,.45); }
-.btn svg{ width:16px; height:16px; }
+.tagline{ color:#d8e6ff; margin:6px 0 14px; font-size:clamp(16px,1.6vw,18px); }
+.badges{ display:flex; gap:10px; flex-wrap:wrap; margin:8px 0 18px; justify-content:center; }
+.cta-row{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
 
 
 /* --- Section cards with colored headers --- */
