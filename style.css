@@ -1,72 +1,89 @@
 /* =========================
-   Academic Vibrant Theme
+   Kate A Thompson — Site CSS
+   Palette: cream taupe + slate + chocolate
    ========================= */
 
-/* --- Tokens --- */
+/* ===== Tokens / Design System ===== */
 :root{
-  /* Base (keep if you already like yours) */
-  --paper: #ffffff;
-  --bg: #f7f8fb;
-  --line: #e2e8f0;
+  /* Layout & rhythm */
+  --maxw: 1080px;
+  --radius: 18px;
+  --shadow: 0 16px 40px rgba(2, 6, 23, .10);
 
-  /* Text */
-  --ink: #0f172a;          /* main body text */
-  --muted: #667085;        /* secondary text */
-  --ink-warm: #4B4744;     /* warm slate accent (lists/notes) */
+  /* Spacing scale */
+  --s1: 12px;
+  --s2: 16px;
+  --s3: 20px;
+  --s4: 28px;
+  --s5: 40px;
+  --s6: 64px;
 
-  /* Brand (headshot-matched) */
-  --brand: #5E3A24;        /* chocolate: buttons/links */
-  --brand-ink: #3B2216;    /* darker chocolate: headings/hover */
-  --brand-2: #222735;      /* cool slate: subtle tints */
+  /* Base surfaces & text */
+  --paper: #ffffff;      /* card surface */
+  --bg: #f7f8fb;         /* page background */
+  --line: #e2e8f0;       /* neutral borders */
 
-  /* Hero gradient (warm cream neutrals) */
-  --hero-1: #ffffff;       /* top */
-  --hero-2: #F6F2EA;       /* soft cream */
-  --hero-3: #EFE8DF;       /* warm sand */
+  --ink: #0f172a;        /* body text (deep slate) */
+  --muted: #667085;      /* secondary text */
+  --ink-warm: #4B4744;   /* warm slate accent (notes/lists) */
+
+  /* Brand (matched to headshot) */
+  --brand: #5E3A24;      /* chocolate: buttons/links */
+  --brand-ink: #3B2216;  /* darker chocolate: headings/hover */
+  --brand-2: #222735;    /* cool slate: subtle accents */
+
+  /* Hero gradient (warm creams) */
+  --hero-1: #ffffff;     /* top */
+  --hero-2: #F6F2EA;     /* soft cream */
+  --hero-3: #EFE8DF;     /* warm sand */
 
   /* Chips/badges */
   --chip-bg: #ffffff;
-  --chip-border: #e8dfd9;  /* warm line */
+  --chip-border: #e8dfd9; /* warm outline */
 }
 
-
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+/* ===== Base ===== */
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
 body{
   margin:0; background:var(--bg); color:var(--ink);
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   line-height:1.7; font-size:16px;
 }
-.container{max-width:var(--maxw); margin:0 auto; padding:0 var(--s4)}
+.container{ max-width:var(--maxw); margin:0 auto; padding:0 var(--s4); }
 
-/* --- Fancy sticky header --- */
+/* Links (brand-aware) */
+a{ color:var(--brand); text-decoration:none; }
+a:hover{ color:var(--brand-ink); text-decoration:underline; }
+
+/* ===== Sticky Header / Nav ===== */
 .site-header{
-  position:sticky; top:0; z-index:50; backdrop-filter: blur(10px);
-  background:linear-gradient(90deg, rgba(255,255,255,.85), rgba(255,255,255,.72));
-  border-bottom:1px solid rgba(226,232,240,.8);
+  position:sticky; top:0; z-index:50;
+  backdrop-filter: blur(10px);
+  background:linear-gradient(90deg, rgba(255,255,255,.88), rgba(255,255,255,.76));
+  border-bottom:1px solid rgba(226,232,240,.85);
 }
-.navbar{display:flex; align-items:center; justify-content:space-between; height:72px}
+.navbar{ display:flex; align-items:center; justify-content:space-between; height:72px; }
 .brand{
-  font-weight:900; letter-spacing:.2px; color:var(--brand-ink); text-decoration:none; font-size:18px
+  font-weight:900; letter-spacing:.2px; color:var(--brand-ink); text-decoration:none; font-size:18px;
 }
 .nav a{
-  color:var(--brand-ink); text-decoration:none; margin-left:22px; padding:6px 2px; position:relative
+  color:var(--brand-ink); text-decoration:none; margin-left:22px; padding:6px 2px; position:relative;
 }
 .nav a::after{
   content:""; position:absolute; left:0; bottom:-3px; height:3px; width:0;
-  background:linear-gradient(90deg,var(--brand),var(--brand-2)); border-radius:3px; transition:width .18s ease
+  background:linear-gradient(90deg, var(--brand), var(--brand-2)); border-radius:3px; transition:width .18s ease;
 }
-.nav a:hover::after{width:100%}
+.nav a:hover::after{ width:100%; }
 
-/* --- Hero: light with warm neutrals + slate tint --- */
+/* ===== Hero (light, warm neutrals) ===== */
 .hero{
   color: var(--ink);
   padding: var(--s6) 0 var(--s5);
   position: relative; overflow: hidden;
   background:
-    radial-gradient(900px 420px at 85% -10%, color-mix(in oklab, var(--brand-2) 14%, transparent), transparent 60%),
-    radial-gradient(800px 360px at 15% -10%, color-mix(in oklab, var(--brand) 12%, transparent), transparent 60%),
+    radial-gradient(900px 420px at 85% -10%, rgba(34, 39, 53, 0.12), transparent 60%), /* slate tint */
+    radial-gradient(820px 360px at 15% -10%, rgba(94, 58, 36, 0.10), transparent 60%), /* chocolate tint */
     linear-gradient(180deg, var(--hero-1) 0%, var(--hero-2) 58%, var(--hero-3) 100%);
 }
 .hero::after{
@@ -77,21 +94,22 @@ body{
 }
 .hero-inner{ position:relative; z-index:1; text-align:center; }
 
-.no-wrap { white-space: nowrap; }
+.no-wrap { white-space: nowrap; } /* utility to keep words together */
+
 .hero h1{
-  text-wrap: balance;
+  text-wrap: balance; /* nicer automatic line breaks */
   margin:0 0 8px;
   font-size:clamp(30px,4.6vw,46px);
   font-weight:900; letter-spacing:.2px;
-  color: var(--brand-ink); /* chocolate for the title */
+  color: var(--brand-ink); /* chocolate title */
 }
 .tagline{
-  color:#566177;           /* slate-ish for contrast on cream */
+  color:#56514d; /* warm slate */
   margin:6px 0 16px;
   font-size:clamp(16px,1.6vw,18px);
 }
 
-/* badges/buttons pick up your palette */
+/* Badges (hero) */
 .badges{
   display:flex; gap:10px; flex-wrap:wrap; margin:8px 0 18px; justify-content:center;
 }
@@ -100,8 +118,9 @@ body{
   background: var(--chip-bg); color: var(--ink); border:1px solid var(--chip-border);
   box-shadow: var(--shadow);
 }
-.badge svg{ width:16px; height:16px; opacity:.8; }
+.badge svg{ width:16px; height:16px; opacity:.85; }
 
+/* Hero CTAs */
 .cta-row{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
 .btn{
   appearance:none; border:0; cursor:pointer; border-radius:999px; padding:10px 16px; font-weight:800;
@@ -111,98 +130,71 @@ body{
 .btn-primary:hover{ filter: brightness(1.05); }
 .btn-ghost{
   background:#ffffff; color: var(--brand-ink);
-  outline:1px solid color-mix(in oklab, var(--brand) 25%, #d9cfc9);
+  outline:1px solid #d9cfc9; /* warm outline */
 }
-.btn-ghost:hover{ outline-color: color-mix(in oklab, var(--brand) 45%, #cdbfb6); }
+.btn-ghost:hover{ outline-color:#cdbfb6; }
 .btn svg{ width:16px; height:16px; }
 
-
-/* badges: light chips with clear borders */
-.badges{
-  display:flex; gap:10px; flex-wrap:wrap; margin:8px 0 18px; justify-content:center;
-}
-.badge{
-  display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; font-weight:600;
-  background:#ffffff; color:#0f172a; border:1px solid #dbe3f0; /* crisp outline on light bg */
-  box-shadow: var(--shadow);
-}
-.badge svg{ width:16px; height:16px; opacity:.8; }
-
-/* buttons: primary stays, ghost becomes outlined dark for light bg */
-.cta-row{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
-.btn{
-  appearance:none; border:0; cursor:pointer; border-radius:999px; padding:10px 16px; font-weight:800;
-  text-decoration:none; display:inline-flex; align-items:center; gap:10px; box-shadow:var(--shadow);
-}
-.btn-primary{ background:#0a66c2; color:#fff; }           /* strong contrast */
-.btn-primary:hover{ filter: brightness(1.05); }
-.btn-ghost{
-  background:#ffffff; color: var(--brand-ink);
-  outline:1px solid #c9d6e8;
-}
-.btn-ghost:hover{ outline-color:#9bb6de; }
-.btn svg{ width:16px; height:16px; }
-
-/* --- Section cards with colored headers --- */
-main{margin-top:-28px}
+/* ===== Sections as Cards ===== */
+main{ margin-top:-28px; } /* subtle overlap with hero */
 .section{
-  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
-  box-shadow:var(--shadow); padding:var(--s5) var(--s5); margin:var(--s5) 0
+  background: var(--paper);
+  border:1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--s5);
+  margin: var(--s5) 0;
 }
 .section .eyebrow{
   display:inline-block; font-weight:800; letter-spacing:.12em; text-transform:uppercase;
-  font-size:.74rem; color:#475569; background:#eef2ff; border:1px solid #c7d2fe;
-  padding:4px 10px; border-radius:999px; margin-bottom:12px
+  font-size:.74rem; color:#5b504b; background:#fff4ea; border:1px solid #f2d5bf;
+  padding:4px 10px; border-radius:999px; margin-bottom:12px;
 }
 .section h2{
-  margin:0 0 var(--s2); font-size:clamp(22px,2.4vw,28px); letter-spacing:.1px
+  margin:0 0 var(--s2);
+  font-size:clamp(22px,2.4vw,28px);
+  letter-spacing:.1px; color: var(--brand-ink);
 }
-.section p{margin:0 0 var(--s2)}
-.section ul{margin:var(--s2) 0 0; padding-left:1.2rem}
-.section li{margin:8px 0}
-.note{color:var(--muted); font-size:.95rem}
+.section p{ margin:0 0 var(--s2); }
+.section ul{ margin:var(--s2) 0 0; padding-left:1.2rem; }
+.section li{ margin:8px 0; }
+.note{ color: var(--ink-warm); font-size:.95rem; }
 
-/* --- H2 --- */
-.section h2 { color: var(--brand-ink); }
-a { color: var(--brand); }
-a:hover { color: var(--brand-ink); }
-
-
-/* --- Publication cards --- */
-.pubs{display:grid; grid-template-columns:1fr; gap:16px}
+/* ===== Publication Cards ===== */
+.pubs{ display:grid; grid-template-columns:1fr; gap:16px; }
 .pub{
   border:1px solid var(--line); border-radius:14px; padding:16px 18px; background:#fff;
-  display:grid; gap:6px
+  display:grid; gap:6px;
 }
-.pub .meta{color:var(--muted); font-size:.92rem}
-.pub a{color:var(--brand); text-decoration:none}
-.pub a:hover{text-decoration:underline}
+.pub .meta{ color:var(--muted); font-size:.92rem; }
+.pub a{ color:var(--brand); }
+.pub a:hover{ color:var(--brand-ink); }
 
-/* --- Timeline chips (Project section) --- */
-.timeline{display:flex; flex-wrap:wrap; gap:10px; margin-top:8px}
+/* ===== Timeline Chips (Project) ===== */
+.timeline{ display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; }
 .chip{
   display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px;
-  border:1px dashed #cbd5e1; background:#f8fafc; color:#0f172a; font-weight:600
+  border:1px dashed #d9cfc9; background:#fffdfa; color:#3f2a1f; font-weight:600;
 }
-.chip svg{width:16px; height:16px}
+.chip svg{ width:16px; height:16px; }
 
-/* --- Contact card --- */
+/* ===== Contact Card ===== */
 .contact-card{
   background:linear-gradient(180deg,#ffffff, #fbfdff);
-  border:1px solid var(--line); border-radius:16px; padding:18px; display:grid; gap:8px
+  border:1px solid var(--line); border-radius:16px; padding:18px; display:grid; gap:8px;
 }
-.contact-card .row{display:flex; gap:12px; align-items:center}
-.contact-card a{color:var(--brand); text-decoration:none}
-.contact-card a:hover{text-decoration:underline}
+.contact-card .row{ display:flex; gap:12px; align-items:center; }
+.contact-card a{ color:var(--brand); }
+.contact-card a:hover{ color:var(--brand-ink); }
 
-/* --- Footer --- */
-footer{margin:var(--s6) 0 var(--s6); color:var(--muted)}
-.links a{color:var(--brand-ink); text-decoration:none; margin-right:16px}
-.links a:hover{text-decoration:underline}
+/* ===== Footer ===== */
+footer{ margin: var(--s6) 0 var(--s6); color: var(--muted); }
+.links a{ color: var(--brand); margin-right:16px; }
+.links a:hover{ color: var(--brand-ink); }
 
-/* --- Mobile tweaks --- */
-@media (max-width:760px){
-  .nav{display:none}
-  .section{padding:var(--s4)}
-  .container{padding:0 var(--s3)}
+/* ===== Mobile Tweaks ===== */
+@media (max-width: 760px){
+  .nav{ display:none; }
+  .section{ padding: var(--s4); }
+  .container{ padding: 0 var(--s3); }
 }
