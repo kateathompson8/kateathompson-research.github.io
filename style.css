@@ -198,3 +198,45 @@ footer{ margin: var(--s6) 0 var(--s6); color: var(--muted); }
   .section{ padding: var(--s4); }
   .container{ padding: 0 var(--s3); }
 }
+
+/* ========== Spacious layout overrides (paste at end) ========== */
+
+/* 1) Remove the hero overlap and give sections breathing room */
+main { margin-top: 0; } /* was -28px */
+.section {
+  padding: 56px;                 /* was 40px */
+  margin: 56px 0;                /* was 40px */
+}
+.section + .section {            /* extra gap between back-to-back cards */
+  margin-top: 64px;
+}
+
+/* 2) Headings and text rhythm */
+.section h2 { margin: 0 0 24px; }         /* more space under headings */
+.section p { margin: 0 0 20px; }          /* bigger para spacing */
+.section ul { margin: 20px 0 0; }         /* breathe before lists */
+.section li { margin: 10px 0; }
+
+.note { margin-top: 12px; }
+
+/* 3) Hero gets taller */
+.hero {
+  padding: 88px 0 72px;          /* top, bottom increased */
+}
+.badges { gap: 14px; margin: 12px 0 22px; }
+.cta-row { gap: 16px; }
+
+/* 4) Publication cards a bit roomier */
+.pubs { gap: 20px; }
+.pub { padding: 22px 24px; }
+
+/* 5) Header/nav a touch taller so it feels airy */
+.navbar { height: 80px; }
+
+/* 6) Mobile tweaks (keep things roomy on phones too) */
+@media (max-width: 760px){
+  .section { padding: 44px; margin: 44px 0; }
+  .section h2 { margin-bottom: 20px; }
+  .hero { padding: 76px 0 60px; }
+  .container { padding: 0 24px; }
+}
