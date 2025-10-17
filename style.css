@@ -10,6 +10,8 @@ h2 { margin-top: 36px; }
 nav a { margin-right: 16px; color: var(--accent); text-decoration: none; }
 .section { scroll-margin-top: 96px; }
 ul { padding-left: 20px; }
-.note { color: var(--muted); font-size: 0.95rem; }
 footer { border-top: 1px solid #eee; margin-top: 40px; }
 .links a { margin-right: 12px; color: var(--accent); text-decoration: none; }
+.note { color:#6b7280; font-size:0.95rem; }
+.note a { color:#0a66c2; }
+
