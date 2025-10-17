@@ -197,4 +197,10 @@ footer{ margin: var(--s6) 0 var(--s6); color: var(--muted); }
 /* (optional) ensure buttons don't stretch weirdly */
 .hero .btn{ align-self: center; }
 
+/* Compact contact section */
+.contact-compact { text-align:center; }
+.contact-compact .lead { margin: 6px 0 10px; font-weight:600; color:#4f5662; }
+.contact-compact .btn-primary { margin-top: 4px; }
+
+
 
