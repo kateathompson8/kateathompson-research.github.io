@@ -205,5 +205,10 @@ footer{ margin: var(--s6) 0 var(--s6); color: var(--muted); }
 .no-wrap { white-space: nowrap; }
 .section h2 { text-wrap: balance; }  /* nicer automatic line breaks */
 
+/* Small SEO+accessibility polish in style.css */
+img{ max-width:100%; height:auto; display:block; }
+:focus-visible{ outline: 3px solid color-mix(in oklab, var(--brand) 50%, white); outline-offset: 2px; }
+
+
 
 
