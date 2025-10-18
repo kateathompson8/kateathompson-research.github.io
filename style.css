@@ -209,6 +209,21 @@ footer{ margin: var(--s6) 0 var(--s6); color: var(--muted); }
 img{ max-width:100%; height:auto; display:block; }
 :focus-visible{ outline: 3px solid color-mix(in oklab, var(--brand) 50%, white); outline-offset: 2px; }
 
+/* Hide visually, keep for screen readers */
+.visually-hidden{
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;   /* prevent line breaks */
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+
+
 
 
 
