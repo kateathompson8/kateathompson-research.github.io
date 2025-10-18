@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://kateathompson-research.au/sitemap.xml
